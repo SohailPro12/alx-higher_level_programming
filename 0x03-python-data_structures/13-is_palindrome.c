@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <string.h>
+
 /**
  * is_palindrome - functin
  * @head: start of list
@@ -11,10 +12,10 @@ int is_palindrome(listint_t **head)
 	listint_t *slow = *head, *fast = *head;
 	listint_t *prev = NULL, *tmp;
 
-	if (*head == NULL || *head->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	while (*fast != NULL && fast->next != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
 		fast = fast->next->next;
 
