@@ -10,11 +10,14 @@
 
 int check_cycle(listint_t *list)
 {
+	listint_t *prevone;
+	listint_t *fastone;
+
 	if (list == NULL)
 		return (0);
 
-	listint_t *prevone = list;
-	listint_t *fastone = list->next;
+	prevone = list;
+	fastone	= list->next;
 
 	while (fastone && fastone->next && prevone)
 	{
