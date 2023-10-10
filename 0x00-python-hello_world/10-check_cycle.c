@@ -13,11 +13,8 @@ int check_cycle(listint_t *list)
 	if (list == NULL)
 		return (0);
 
-	listint_t *prevone;
-	listint_t *fastone;
-
-	prevone = list;
-	fastone = list->next;
+	listint_t *prevone = list;
+	listint_t *fastone = list->next;
 
 	while (fastone && fastone->next && prevone)
 	{
