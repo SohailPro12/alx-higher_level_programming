@@ -9,4 +9,3 @@ def complex_delete(a_dictionary, value):
         del a_dictionary[key]
 
     return a_dictionary
-
