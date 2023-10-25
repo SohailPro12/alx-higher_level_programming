@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Square module."""
+"""module."""
 
 
 class Square:
@@ -11,4 +11,4 @@ class Square:
     Args:
         size: length of a side of the square.
     """
-    self._size = size
+    self.__size = size
