@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Square module: based on 0-square 
+Square module: based on 0-square 
 """
 
 
@@ -10,8 +10,7 @@ class Square:
     one attribute
     """
     def __init__(self, size):
-        """
-        Constructor.
+        """Constructor.
 
         Args:
             size: length of a side of the square.
