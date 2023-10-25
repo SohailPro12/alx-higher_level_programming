@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 """
-    Square module.
+    Square module: based on 0-square 
 """
 
 
 class Square:
     """
-    Defines a square.
+    Defines a square class:
+    one attribute
     """
-
     def __init__(self, size):
     """
     Constructor.
