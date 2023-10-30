@@ -3,6 +3,7 @@
 Module that contain one class
 """
 
+
 class Rectangle:
     """Empty class rectangle"""
     pass
