@@ -61,3 +61,7 @@ class Rectangle:
     def __repr__(self):
         """repr() for developers"""
         return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """message after del"""
+        print("Bye rectangle...")
