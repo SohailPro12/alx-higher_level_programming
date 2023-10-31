@@ -6,57 +6,64 @@ import sys
 
 
 
-def nqueens(n):
-    """
-    Solve the N Queens problem using backtracking.
+def is_safe(board, row, col, N):
+    """Check if it's safe to place a queen at position (row, col)."""
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+    return True
 
-    Args:
-        n (int): The size of the chessboard and the number of queens.
+def solve_n_queens_util(board, col, N, solutions):
+    """Recursively solve the N queens problem."""
+    if col == N:
+        solution = []
+        for i in range(N):
+            for j in range(N):
+                if board[i][j] == 1:
+                    solution.append([i, j])
+        solutions.append(solution)
+        return True
 
-    Returns:
-        list: A list of all valid solutions to the N Queens problem.
+    res = False
+    for i in range(N):
+        if is_safe(board, i, col, N):
+            board[i][col] = 1
+            res = solve_n_queens_util(board, col + 1, N, solutions) or res
+            board[i][col] = 0
+    return res
 
-    Raises:
-        ValueError: If n is not an integer or n is smaller than 4.
-    """
-    if not isinstance(n, int):
-        raise ValueError("N must be a number")
-    if n < 4:
-        raise ValueError("N must be at least 4")
+def solve_n_queens(N):
+    """Solve the N queens problem for a given N."""
+    if not isinstance(N, int):
+        print("N must be a number")
+        sys.exit(1)
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
 
-    def backtrack(row, cols, diags1, diags2):
-        """
-        Recursive function to find valid solutions by backtracking.
+    board = [[0 for _ in range(N)] for _ in range(N)]
+    solutions = []
+    solve_n_queens_util(board, 0, N, solutions)
 
-        Args:
-            row (int): The current row being considered.
-            cols (list): List of column positions of queens placed so far.
-            diags1 (list): List of diagonal positions (/) of queens placed so far.
-            diags2 (list): List of diagonal positions (\) of queens placed so far.
-
-        Returns:
-            list: A list of valid solutions found so far.
-        """
-        if row == n:
-            return [cols]
-        solutions = []
-        for col in range(n):
-            if col not in cols and row+col not in diags1 and row-col not in diags2:
-                solutions += backtrack(row+1, cols+[col], diags1+[row+col], diags2+[row-col])
-        return solutions
-
-    return backtrack(0, [], [], [])
+    for solution in solutions:
+        print(solution)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
+
     try:
-        n = int(sys.argv[1])
+        N = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
         sys.exit(1)
-    solutions = nqueens(n)
-    for solution in solutions:
-        print(solution)
+
+    solve_n_queens(N)
 
