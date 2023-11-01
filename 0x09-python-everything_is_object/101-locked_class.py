@@ -5,7 +5,7 @@ Module that contain one class LockedClass
 
 
 class LockedClass:
-    """ Locked Class 
+    """ Locked Class
     you can not add any other attributs
     """
 
