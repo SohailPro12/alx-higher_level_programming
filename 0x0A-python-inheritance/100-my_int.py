@@ -4,10 +4,12 @@ Modul with the MyInt class.
 """
 
 
-class MyInt:
+class MyInt(int):
     """inherts from int"""
-    def __init__(self, n):
-        self.n =  n
-    def __str__(self):
-    """str imp"""
-        return f"{int(self.n)}"
+    def __eq__(self, other):
+        """not equal"""
+        return super().__ne__(other)
+
+    def __ne__(self, other):
+        """equal"""
+        return super().__eq__(other)
