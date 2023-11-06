@@ -10,7 +10,7 @@ def lookup(obj):
     methods and objs
     Args:
         obj: object
-    Return:
+    Returns:
         list of objs
     """
     return dir(obj)
