@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module of one class
+Module of one method
 """
 
 
