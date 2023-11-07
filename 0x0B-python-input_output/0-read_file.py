@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Module with read_file function.
 """
