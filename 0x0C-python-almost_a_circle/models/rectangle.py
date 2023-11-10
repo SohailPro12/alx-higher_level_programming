@@ -129,7 +129,7 @@ class Rectangle(Base):
         """Returns the string representation of the rectangle"""
         return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
 
-   def update(self, *args, **kwargs):
+    def update(self, *args, **kwargs):
         """Update the rectangle instance"""
         if args:
             attrs = ["id", "width", "height", "x", "y"]
@@ -138,8 +138,6 @@ class Rectangle(Base):
         elif kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-
     def to_dictionary(self):
-        """Returns dictionary representation"""
-        return {"id": self.id, "width": self.__width, "height": self.__height,
-                "x": self.__x, "y": self.__y}
+        '''Returns dictionary representation of this class.'''
+        return {"x": self.__x,  "y": self.__y, "id": self.id, "height": self.__height, "width": self.__width}
