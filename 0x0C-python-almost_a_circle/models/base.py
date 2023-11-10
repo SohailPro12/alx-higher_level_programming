@@ -1,20 +1,21 @@
-# models/base.py
+#!/usr/bin/python3
 """
 This module defines a Base class that serves as the base for other classes in the project.
+It includes methods for JSON string conversion, file saving, and object creation from dictionary.
 """
 
 import json
 
 class Base:
     """
-    Base class for the project. It includes methods for JSON string conversion and file saving.
+    Base class for the project
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
         """
         Initialize a new Base instance.
-
+        
         Args:
             id: id of the instance
         """
@@ -37,6 +38,7 @@ class Base:
         else:
             return json.dumps(list_dictionaries)
 
+    @classmethod
     def save_to_file(cls, list_objs):
         """
         Save a list of objects to a file in JSON string format.
@@ -50,15 +52,27 @@ class Base:
         with open(filename, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_dicts))
 
+    @staticmethod
     def from_json_string(json_string):
-        """return json string"""
-        if json_string is None or len(json_string) == 0:
-            return "[]"
-        else:
-            return json_string
+        """
+        Convert a JSON string to a list of dictionaries.
 
+        :param json_string: JSON string to convert
+        :return: list of dictionaries
+        """
+        if json_string is None or len(json_string) == 0:
+            return []
+        else:
+            return json.loads(json_string)
+
+    @classmethod
     def create(cls, **dictionary):
-        """creat a new dictionary"""
+        """
+        Create a new instance of the class using a dictionary of attributes.
+
+        :param dictionary: dictionary of attributes
+        :return: new instance of the class
+        """
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         elif cls.__name__ == "Square":
@@ -67,3 +81,19 @@ class Base:
             dummy = None
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Load a list of instances from a file in JSON string format.
+
+        :return: list of instances
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, mode="r", encoding="utf-8") as f:
+                json_string = f.read()
+                list_dicts = cls.from_json_string(json_string)
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
