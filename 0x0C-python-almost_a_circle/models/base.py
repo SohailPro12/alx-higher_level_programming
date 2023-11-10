@@ -15,7 +15,8 @@ class Base:
         """
         Initialize a new Base instance.
 
-        :param id: id of the instance
+        Args:
+            id: id of the instance
         """
         if id is not None:
             self.id = id
@@ -49,3 +50,10 @@ class Base:
         list_dicts = [obj.to_dictionary() for obj in list_objs]
         with open(filename, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_dicts))
+
+    def from_json_string(json_string):
+        """return json string"""
+        if json_string is None or len(json_string) == 0:
+            return "[]"
+        else:
+            return json_string
