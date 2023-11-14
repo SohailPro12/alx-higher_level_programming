@@ -15,7 +15,7 @@ class Base:
     def __init__(self, id=None):
         """
         Initialize a new Base instance.
-        
+
         Args:
             id: id of the instance
         """
@@ -97,3 +97,31 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
+
+    def save_to_file_csv(cls, list_objs):
+        """
+        Save a list of objects to a CSV file.
+
+        :param list_objs: list of objects to save
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w", newline="") as f:
+            writer = csv.writer(f)
+            for obj in list_objs:
+                writer.writerow(obj.to_csv_row())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Load a list of instances from a CSV file.
+
+        :return: list of instances
+        """
+        filename = cls.__name__ + ".csv"
+        instances = []
+        with open(filename, mode="r", newline="") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                instance = cls.from_csv_row(row)
+                instances.append(instance)
+        return instances
