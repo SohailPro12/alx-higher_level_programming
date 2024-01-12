@@ -6,8 +6,8 @@
 
 if __name__ == '__main__':
     import sys
-    import MySQLdb 
-    
+    import MySQLdb
+
     user=sys.argv[1]
     password=sys.argv[2]
     db=sys.argv[3]
