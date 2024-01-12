@@ -13,8 +13,8 @@ if __name__ == '__main__':
     db=sys.argv[3]
 
     db = MySQLdb.connect(host='localhost', port=3306,
-                         user, password, db)
-    cursor = self.db.cursor()
+                         user=user, password=password, db=db)
+    cursor = b.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
     rows = cur.fetchall()
     for row in rows:
