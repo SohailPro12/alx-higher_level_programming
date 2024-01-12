@@ -10,10 +10,10 @@ if __name__ == '__main__':
 
     user=sys.argv[1]
     password=sys.argv[2]
-    db=sys.argv[3]
+    db_name=sys.argv[3]
 
     db = MySQLdb.connect(host='localhost', port=3306,
-                         user=user, password=password, db=db)
+                         user=user, passwd=password, db=db_name)
     cursor = b.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
     rows = cur.fetchall()
