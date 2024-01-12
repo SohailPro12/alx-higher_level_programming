@@ -18,7 +18,10 @@ if __name__ == '__main__':
                          user=user_name, passwd=password, db=db_name)
 
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM cities ORDER BY cities.id ASC;")
+    cursor.execute("SELECT cities.id, cities.name, states.name\
+                    FROM cities LEFT JOIN states\
+                    ON states.id=cities.id\
+                    ORDER BY cities.id ASC;")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
