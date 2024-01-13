@@ -27,5 +27,9 @@ if __name__ == '__main__':
                     WHERE states.name=%s\
                     ORDER BY cities.id ASC; ", (state_name,))
     rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+    for i, row in enumerate(rows):
+        if i < len(rows) - 1:
+            print(row[0], end=", ")
+            i = i+1
+        else:
+            print(row[0], end="\n")
