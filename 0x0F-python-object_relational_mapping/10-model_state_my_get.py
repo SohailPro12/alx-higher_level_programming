@@ -22,7 +22,8 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    results = session.query(State).filter(State.name==state_name).order_by(State.id).all()
+    results = session.query(State).filter(
+            State.name == state_name).order_by(State.id).first()
     if results:
         print(results.id)
     else:
