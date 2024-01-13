@@ -14,7 +14,6 @@ if __name__ == "__main__":
     user = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         user, password, db_name, pool_pre_ping=True))
@@ -22,7 +21,8 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    results = session.query(State).filter(State.name.like("%a%")).order_by(State.id).all()
+    results = session.query(State).filter(State.name.like(
+                            "%a%")).order_by(State.id).all()
     for state in results:
         print("{}: {}".format(state.id, state.name))
     session.close()
