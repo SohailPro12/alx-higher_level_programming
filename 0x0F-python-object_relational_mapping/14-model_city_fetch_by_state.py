@@ -9,6 +9,8 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     from model_state import Base, State
     import sys
+    from model_city import City
+    from sqlalchemy.schema import Table
 
     user = sys.argv[1]
     password = sys.argv[2]
