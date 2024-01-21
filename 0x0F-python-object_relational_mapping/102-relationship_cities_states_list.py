@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" lists all State objects, and corresponding City"""
+"""  lists all City objects from the database hbtn_0e_101_usa """
+
 import sys
 from relationship_state import Base, State
 from relationship_city import City
@@ -17,9 +18,6 @@ if __name__ == "__main__":
     session = Session()
 
     for instance in session.query(State).order_by(State.id):
-        print(instance.id, instance.name, sep=": ")
         for city_ins in instance.cities:
-            print("    ", end="")
-            print(city_ins.id, city_ins.name, sep=": ")
-
-    session.close()
+            print(city_ins.id, city_ins.name, sep=": ", end="")
+            print(" -> " + instance.name)
