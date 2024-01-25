@@ -12,7 +12,7 @@ def find_peak(list_of_integers):
 
     while left < right:
         mid = (right + left) // 2
-        
+
         if list_of_integers[mid] > list_of_integers[mid+1]:
             right = mid
         else:
