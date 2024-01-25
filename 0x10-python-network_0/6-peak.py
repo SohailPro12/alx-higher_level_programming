@@ -15,6 +15,6 @@ def find_peak(list_of_integers):
         
         if list_of_integers[mid] > list_of_integers[mid+1]:
             right = mid
-        elif:
+        else:
             left = mid + 1
     return list_of_integers[left]
