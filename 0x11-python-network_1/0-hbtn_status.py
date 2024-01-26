@@ -4,7 +4,6 @@
 from urllib import request, error
 
 
-
 url = "https://alx-intranet.hbtn.io/status"
 
 with request.urlopen(url) as response:
