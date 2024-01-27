@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""   fetches https://alx-intranet.hbtn.io/status """
+
+"""fetches the url"""
 
 from urllib import request, error
 
