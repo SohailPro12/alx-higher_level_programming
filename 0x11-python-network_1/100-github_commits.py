@@ -18,7 +18,7 @@ if __name__ == "__main__":
     try:
         for i in range(10):
             print("{}: {}".format(
-                j[i]["sha"],
-                j[i]["commit"]["author"]["name"]))
+                j[i].get("sha"),
+                j[i].get("commit").get("author").get("name")))
     except IndexError:
         pass
