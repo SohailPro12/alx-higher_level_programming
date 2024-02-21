@@ -2,6 +2,8 @@
 
 const request = require('request');
 const url = process.argv[2];
+const characterId = '18'; // ID of Wedge Antilles
+
 let count = 0;
 
 request(url, (error, response, body) => {
@@ -11,8 +13,10 @@ request(url, (error, response, body) => {
     const films = JSON.parse(body).results;
     for (const film of films) {
       const characters = film.characters;
-      for (const character of characters) {
-        if (character === 'https://swapi-api.alx-tools.com/api/people/18') {
+      for (const characterUrl of characters) {
+        // Extract character ID from character URL
+        const id = characterUrl.split('/').slice(-2, -1)[0];
+        if (id === characterId) {
           count++;
         }
       }
